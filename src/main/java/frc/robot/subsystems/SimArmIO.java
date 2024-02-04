@@ -6,7 +6,7 @@ import edu.wpi.first.math.util.Units;
 import edu.wpi.first.wpilibj.simulation.SingleJointedArmSim;
 import frc.robot.Constants;
 
-public class SimJoshArmIO implements IJoshArmIO {
+public class SimArmIO implements IArmIO {
     private static final double TICK = 2.0 * Math.PI / Constants.ENCODER_COUNT;
 
     private final SingleJointedArmSim armSim;
@@ -14,7 +14,7 @@ public class SimJoshArmIO implements IJoshArmIO {
     private double angleRads;
     private double motorSpeed; // -1 to 1
 
-    public SimJoshArmIO() {
+    public SimArmIO() {
         armSim = new SingleJointedArmSim(
           DCMotor.getNEO(1),
           100,

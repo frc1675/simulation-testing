@@ -6,12 +6,12 @@ import com.revrobotics.CANSparkLowLevel.MotorType;
 import edu.wpi.first.wpilibj.Encoder;
 import frc.robot.Constants;
 
-public class RealJoshArmIO implements IJoshArmIO {
+public class RealArmIO implements IArmIO {
 
     private CANSparkMax motor;
     private Encoder encoder;
 
-    public RealJoshArmIO() {
+    public RealArmIO() {
         motor = new CANSparkMax(Constants.ARM_MOTOR_ID, MotorType.kBrushless);
         encoder = new Encoder(Constants.ENCODER_CHANNEL_A, Constants.ENCODER_CHANNEL_B);
     }

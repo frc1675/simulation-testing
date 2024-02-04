@@ -5,15 +5,15 @@ import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
-public class JoshArm extends SubsystemBase {
+public class Arm extends SubsystemBase {
 
-  private IJoshArmIO armIO;
+  private IArmIO armIO;
   private PIDController pid;
   private double targetAngle = 57.5;
   private ShuffleboardTab tab;
   private double motorPower = 0.0;
 
-  public JoshArm(IJoshArmIO armIO) {
+  public Arm(IArmIO armIO) {
     this.armIO = armIO;
     pid = new PIDController(.01, 0, 0);
 

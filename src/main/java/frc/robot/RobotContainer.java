@@ -8,26 +8,26 @@ import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.commands.SetJoshAngle;
 import frc.robot.commands.SetShuffleboardAngle;
-import frc.robot.subsystems.IJoshArmIO;
-import frc.robot.subsystems.JoshArm;
-import frc.robot.subsystems.RealJoshArmIO;
-import frc.robot.subsystems.SimJoshArmIO;
+import frc.robot.subsystems.IArmIO;
+import frc.robot.subsystems.Arm;
+import frc.robot.subsystems.RealArmIO;
+import frc.robot.subsystems.SimArmIO;
 
 public class RobotContainer {
 
-  private final JoshArm arm;
+  private final Arm arm;
   private final CommandXboxController m_driverController = new CommandXboxController(Constants.DRIVER_CONTROLLER);
 
   public RobotContainer() {
-    IJoshArmIO armIO;
+    IArmIO armIO;
 
     if (Robot.isSimulation()) {
-      armIO = new SimJoshArmIO();
+      armIO = new SimArmIO();
     } else {
-      armIO =new RealJoshArmIO();
+      armIO = new RealArmIO();
     }
 
-    arm = new JoshArm(armIO);
+    arm = new Arm(armIO);
 
     configureBindings();
   }
