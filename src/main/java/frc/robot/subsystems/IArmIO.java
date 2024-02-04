@@ -1,7 +1,7 @@
 package frc.robot.subsystems;
 
 /**
- * Contract for an object that can perform the needed input and output for a JoshArm
+ * Contract for an object that can perform the needed input and output for an Arm
  * 
  * The implementations of this interface do the actual "work" and only what is needed to accomplish it.
  * 
@@ -16,7 +16,7 @@ package frc.robot.subsystems;
  *   physical arm and provide feedback 
  * 
  * the "test" implementation provides hooks in its concrete class for use in unit testing to affirm
- *   that the logic of the JoshArm subsystem works as intended.
+ *   that the logic of the Arm subsystem works as intended.
  */
 public interface IArmIO {
 
