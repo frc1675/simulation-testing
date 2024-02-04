@@ -4,9 +4,10 @@ import edu.wpi.first.math.VecBuilder;
 import edu.wpi.first.math.system.plant.DCMotor;
 import edu.wpi.first.math.util.Units;
 import edu.wpi.first.wpilibj.simulation.SingleJointedArmSim;
+import frc.robot.Constants;
 
 public class SimJoshArmIO implements IJoshArmIO {
-    private static final double TICK = 2.0 * Math.PI / 8192; // throughbore encoder
+    private static final double TICK = 2.0 * Math.PI / Constants.ENCODER_COUNT;
 
     private final SingleJointedArmSim armSim;
     

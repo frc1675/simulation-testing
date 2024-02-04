@@ -18,19 +18,11 @@ public class JoshArm extends SubsystemBase {
     pid = new PIDController(.01, 0, 0);
 
     tab = Shuffleboard.getTab("JoshArm");
-    tab.addDouble("motorPower", () -> motorPower );
-    tab.addDouble("target", () -> targetAngle);
-    tab.addDouble("measurement", () -> armIO.getMeasurement());
-    tab.addBoolean("onTarget", () -> onTarget());
+    tab.addDouble("Motor Power", () -> motorPower );
+    tab.addDouble("Target Angle Degrees", () -> targetAngle);
+    tab.addDouble("Current Angle", () -> armIO.getMeasurement());
+    tab.addBoolean("Is On Target?", () -> onTarget());
     tab.add("PID", pid);
-  }
-
-  @Override
-  public void periodic() {
-    motorPower = pid.calculate(armIO.getMeasurement(), targetAngle);
-    armIO.setMotorOutput(motorPower);
-    armIO.periodic();
-  
   }
 
   public void setTarget(double angleDeg) {
@@ -39,5 +31,13 @@ public class JoshArm extends SubsystemBase {
 
   public boolean onTarget() {
     return Math.abs(armIO.getMeasurement() - targetAngle) < 0.5;
+  }
+
+  @Override
+  public void periodic() {
+    motorPower = pid.calculate(armIO.getMeasurement(), targetAngle);
+    armIO.setMotorOutput(motorPower);
+    armIO.periodic();
+  
   }
 }
