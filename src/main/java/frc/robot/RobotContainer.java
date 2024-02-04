@@ -10,6 +10,7 @@ import frc.robot.commands.SetJoshAngle;
 import frc.robot.commands.SetShuffleboardAngle;
 import frc.robot.subsystems.IJoshArmIO;
 import frc.robot.subsystems.JoshArm;
+import frc.robot.subsystems.RealJoshArmIO;
 import frc.robot.subsystems.SimJoshArmIO;
 
 public class RobotContainer {
@@ -23,7 +24,7 @@ public class RobotContainer {
     if (Robot.isSimulation()) {
       armIO = new SimJoshArmIO();
     } else {
-      armIO = null; //TODO: replace with real arm IO
+      armIO =new RealJoshArmIO();
     }
 
     arm = new JoshArm(armIO);
