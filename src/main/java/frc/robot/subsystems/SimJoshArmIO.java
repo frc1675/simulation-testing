@@ -1,28 +1,17 @@
-// Copyright (c) FIRST and other WPILib contributors.
-// Open Source Software; you can modify and/or share it under the terms of
-// the WPILib BSD license file in the root directory of this project.
-
 package frc.robot.subsystems;
 
 import edu.wpi.first.math.VecBuilder;
 import edu.wpi.first.math.system.plant.DCMotor;
 import edu.wpi.first.math.util.Units;
-import edu.wpi.first.wpilibj.Encoder;
-import edu.wpi.first.wpilibj.simulation.EncoderSim;
 import edu.wpi.first.wpilibj.simulation.SingleJointedArmSim;
-import frc.robot.Constants;
 
-/** Add your docs here. */
 public class SimJoshArmIO implements IJoshArmIO {
-
-    // 15kg 30in
-    // start at 57.5 deg go to 185 deg
     private static final double TICK = 2.0 * Math.PI / 8192; // throughbore encoder
-    SingleJointedArmSim armSim;
-    
-    double angleRads;
 
-    double motorSpeed; // -1 to 1
+    private final SingleJointedArmSim armSim;
+    
+    private double angleRads;
+    private double motorSpeed; // -1 to 1
 
     public SimJoshArmIO() {
         armSim = new SingleJointedArmSim(

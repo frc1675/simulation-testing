@@ -1,7 +1,3 @@
-// Copyright (c) FIRST and other WPILib contributors.
-// Open Source Software; you can modify and/or share it under the terms of
-// the WPILib BSD license file in the root directory of this project.
-
 package frc.robot.subsystems;
 
 import edu.wpi.first.math.controller.PIDController;
@@ -14,20 +10,19 @@ public class JoshArm extends SubsystemBase {
   private IJoshArmIO armIO;
   private PIDController pid;
   private double targetAngle = 57.5;
-  private ShuffleboardTab sb;
+  private ShuffleboardTab tab;
   private double motorPower = 0.0;
 
-  /** Creates a new JoshArm. */
   public JoshArm(IJoshArmIO armIO) {
     this.armIO = armIO;
     pid = new PIDController(.01, 0, 0);
 
-    sb = Shuffleboard.getTab("JoshArm");
-    sb.addDouble("motorPower", () -> motorPower );
-    sb.addDouble("target", () -> targetAngle);
-    sb.addDouble("measurement", () -> armIO.getMeasurement());
-    sb.addBoolean("onTarget", () -> onTarget());
-    sb.add("PID", pid);
+    tab = Shuffleboard.getTab("JoshArm");
+    tab.addDouble("motorPower", () -> motorPower );
+    tab.addDouble("target", () -> targetAngle);
+    tab.addDouble("measurement", () -> armIO.getMeasurement());
+    tab.addBoolean("onTarget", () -> onTarget());
+    tab.add("PID", pid);
   }
 
   @Override
@@ -38,13 +33,11 @@ public class JoshArm extends SubsystemBase {
   
   }
 
-  public void setTarget(double angleDeg)
-  {
+  public void setTarget(double angleDeg) {
     targetAngle = angleDeg;
   }
 
-  public boolean onTarget()
-  {
+  public boolean onTarget() {
     return Math.abs(armIO.getMeasurement() - targetAngle) < 0.5;
   }
 }
