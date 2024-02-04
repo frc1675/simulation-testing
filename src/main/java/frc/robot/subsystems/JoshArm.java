@@ -20,11 +20,13 @@ public class JoshArm extends SubsystemBase {
   /** Creates a new JoshArm. */
   public JoshArm(IJoshArmIO armIO) {
     this.armIO = armIO;
-    pid = new PIDController(.001, 0, 0);
+    pid = new PIDController(.01, 0, 0);
 
     sb = Shuffleboard.getTab("JoshArm");
     sb.addDouble("motorPower", () -> motorPower );
+    sb.addDouble("target", () -> targetAngle);
     sb.addDouble("measurement", () -> armIO.getMeasurement());
+    sb.addBoolean("onTarget", () -> onTarget());
   }
 
   @Override
@@ -38,5 +40,10 @@ public class JoshArm extends SubsystemBase {
   public void setTarget(double angleDeg)
   {
     targetAngle = angleDeg;
+  }
+
+  public boolean onTarget()
+  {
+    return Math.abs(armIO.getMeasurement() - targetAngle) < 0.5;
   }
 }
