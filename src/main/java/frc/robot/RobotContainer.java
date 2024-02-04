@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
-import frc.robot.commands.SetJoshAngle;
+import frc.robot.commands.SetArmAngle;
 import frc.robot.commands.SetShuffleboardAngle;
 import frc.robot.subsystems.IArmIO;
 import frc.robot.subsystems.Arm;
@@ -36,8 +36,8 @@ public class RobotContainer {
     ShuffleboardTab tab = Shuffleboard.getTab("JoshArm");
     GenericEntry e = tab.add("Variable target", 0).getEntry();
 
-    m_driverController.a().onTrue(new SetJoshAngle(arm, 57.5));
-    m_driverController.b().onTrue(new SetJoshAngle(arm, 90));
+    m_driverController.a().onTrue(new SetArmAngle(arm, 57.5));
+    m_driverController.b().onTrue(new SetArmAngle(arm, 90));
     m_driverController.x().onTrue(new SetShuffleboardAngle(arm, e, 90));
   }
 
