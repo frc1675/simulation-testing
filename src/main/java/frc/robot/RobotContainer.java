@@ -1,5 +1,8 @@
 package frc.robot;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import edu.wpi.first.networktables.GenericEntry;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
@@ -10,7 +13,9 @@ import frc.robot.commands.SetJoshAngle;
 import frc.robot.commands.SetShuffleboardAngle;
 import frc.robot.subsystems.IArmIO;
 import frc.robot.subsystems.Arm;
+import frc.robot.subsystems.IArmDisplay;
 import frc.robot.subsystems.RealArmIO;
+import frc.robot.subsystems.ShuffleboardArmDisplay;
 import frc.robot.subsystems.SimArmIO;
 
 public class RobotContainer {
@@ -20,14 +25,17 @@ public class RobotContainer {
 
   public RobotContainer() {
     IArmIO armIO;
-
+    List<IArmDisplay> armDisplays = new ArrayList<IArmDisplay>();
     if (Robot.isSimulation()) {
       armIO = new SimArmIO();
+      armDisplays.add(new ShuffleboardArmDisplay("ArmDebug"));
     } else {
       armIO = new RealArmIO();
+      armDisplays.add(new ShuffleboardArmDisplay("ArmDebug"));
+      // one might add a concrete IArmDisplay for a "competition" dashboard here.
     }
 
-    arm = new Arm(armIO);
+    arm = new Arm(armIO, armDisplays);
 
     configureBindings();
   }

@@ -1,5 +1,7 @@
 package frc.robot.subsystems;
 
+import java.util.List;
+
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
@@ -13,16 +15,14 @@ public class Arm extends SubsystemBase {
   private ShuffleboardTab tab;
   private double motorPower = 0.0;
 
-  public Arm(IArmIO armIO) {
+  public Arm(IArmIO armIO, List<IArmDisplay> displays) {
     this.armIO = armIO;
     pid = new PIDController(.01, 0, 0);
 
-    tab = Shuffleboard.getTab("JoshArm");
-    tab.addDouble("Motor Power", () -> motorPower );
-    tab.addDouble("Target Angle Degrees", () -> targetAngle);
-    tab.addDouble("Current Angle", () -> armIO.getMeasurement());
-    tab.addBoolean("Is On Target?", () -> onTarget());
-    tab.add("PID", pid);
+    for (IArmDisplay display : displays)
+    {
+      display.initializeDisplay(this);
+    }
   }
 
   public void setTarget(double angleDeg) {
@@ -30,14 +30,29 @@ public class Arm extends SubsystemBase {
   }
 
   public boolean onTarget() {
-    return Math.abs(armIO.getMeasurement() - targetAngle) < 0.5;
+    return Math.abs(getMeasurement() - targetAngle) < 0.5;
   }
 
   @Override
   public void periodic() {
-    motorPower = pid.calculate(armIO.getMeasurement(), targetAngle);
+    motorPower = pid.calculate(getMeasurement(), targetAngle);
     armIO.setMotorOutput(motorPower);
     armIO.periodic();
-  
+  }
+
+  public double getMotorPower() {
+    return motorPower;
+  }
+
+  public double getTarget() {
+    return targetAngle;
+  }
+
+  public double getMeasurement() {
+    return armIO.getMeasurement();
+  }
+
+  public PIDController getPidController() {
+    return pid;
   }
 }
