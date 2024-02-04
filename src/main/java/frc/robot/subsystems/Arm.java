@@ -3,8 +3,6 @@ package frc.robot.subsystems;
 import java.util.List;
 
 import edu.wpi.first.math.controller.PIDController;
-import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
-import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Arm extends SubsystemBase {
@@ -12,16 +10,16 @@ public class Arm extends SubsystemBase {
   private IArmIO armIO;
   private PIDController pid;
   private double targetAngle = 57.5;
-  private ShuffleboardTab tab;
   private double motorPower = 0.0;
 
   public Arm(IArmIO armIO, List<IArmDisplay> displays) {
     this.armIO = armIO;
     pid = new PIDController(.01, 0, 0);
 
-    for (IArmDisplay display : displays)
-    {
-      display.initializeDisplay(this);
+    if (displays != null) {
+      for (IArmDisplay display : displays) {
+        display.initializeDisplay(this);
+      }
     }
   }
 
