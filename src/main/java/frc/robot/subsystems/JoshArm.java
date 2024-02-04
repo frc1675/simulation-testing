@@ -27,6 +27,7 @@ public class JoshArm extends SubsystemBase {
     sb.addDouble("target", () -> targetAngle);
     sb.addDouble("measurement", () -> armIO.getMeasurement());
     sb.addBoolean("onTarget", () -> onTarget());
+    sb.add("PID", pid);
   }
 
   @Override
