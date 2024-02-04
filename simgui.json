@@ -1,0 +1,12 @@
+{
+  "NetworkTables": {
+    "transitory": {
+      "Shuffleboard": {
+        "JoshArm": {
+          "open": true
+        },
+        "open": true
+      }
+    }
+  }
+}
