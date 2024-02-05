@@ -4,17 +4,18 @@ import java.util.List;
 
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants;
 
 public class Arm extends SubsystemBase {
 
   private IArmIO armIO;
   private PIDController pid;
-  private double targetAngle = 57.5;
+  private double targetAngle = Constants.HOME_DEG;
   private double motorPower = 0.0;
 
   public Arm(IArmIO armIO, List<IArmDisplay> displays) {
     this.armIO = armIO;
-    pid = new PIDController(.01, 0, 0);
+    pid = new PIDController(.075, 1.2, .01);
 
     if (displays != null) {
       for (IArmDisplay display : displays) {

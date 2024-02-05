@@ -1,6 +1,8 @@
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.beans.Transient;
+
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -34,6 +36,13 @@ public class ArmTest {
 
         io.setCurrentMeasurement(179.8);
         assertTrue(arm.onTarget());
+    }
+
+    @Test
+    public void testPeriodic() {
+        arm.periodic();
+
+        assertTrue(io.periodicCalled);
     }
 
 }

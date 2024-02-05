@@ -2,13 +2,27 @@
   "NTProvider": {
     "types": {
       "/FMSInfo": "FMSInfo",
+      "/Shuffleboard/ArmDebug/Arm Graphic": "Mechanism2d",
       "/Shuffleboard/ArmDebug/PID": "PIDController"
+    },
+    "windows": {
+      "/Shuffleboard/ArmDebug/Arm Graphic": {
+        "window": {
+          "visible": true
+        }
+      }
     }
   },
   "NetworkTables": {
     "transitory": {
       "Shuffleboard": {
         "ArmDebug": {
+          "Arm Graphic": {
+            "open": true
+          },
+          "PID": {
+            "open": true
+          },
           "open": true
         },
         "JoshArm": {
@@ -27,7 +41,8 @@
         {
           "axis": [
             {
-              "max": 120.0
+              "max": 120.0,
+              "min": -90.0
             }
           ],
           "backgroundColor": [
