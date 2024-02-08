@@ -18,7 +18,7 @@ public class RealArmIO implements IArmIO {
 
     @Override
     public void setMotorOutput(double power) {
-        motor.set(power * 12);
+        motor.setVoltage(power * 12);
     }
 
     @Override

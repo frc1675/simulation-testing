@@ -15,7 +15,6 @@ import frc.robot.Constants;
 
 public class SimArmIO implements IArmIO {
     private static final double TICK = 2.0 * Math.PI / Constants.ENCODER_COUNT;
-    
 
     private final SingleJointedArmSim armSim = new SingleJointedArmSim(
           DCMotor.getNEO(1),

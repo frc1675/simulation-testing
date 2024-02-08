@@ -28,7 +28,7 @@ public interface IArmIO {
     public void setMotorOutput(double power);
 
     /**
-     * @return the current measurement of the arm angle in degrees. 0 degrees is vertically down.
+     * @return the current measurement of the arm angle in degrees. -90 degrees is vertically down.
      */
     public double getMeasurement();
 
