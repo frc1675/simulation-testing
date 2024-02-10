@@ -17,9 +17,9 @@ public class SimArmIO implements IArmIO {
     private static final double TICK = 2.0 * Math.PI / Constants.ENCODER_COUNT;
 
     private final SingleJointedArmSim armSim = new SingleJointedArmSim(
-          DCMotor.getNEO(1),
+          DCMotor.getNEO(2),
           100,
-          SingleJointedArmSim.estimateMOI(Units.inchesToMeters(30), 15),
+          SingleJointedArmSim.estimateMOI(Units.inchesToMeters(20), Units.lbsToKilograms(20)),
           Units.inchesToMeters(30),
           Units.degreesToRadians(Constants.HOME_DEG),
           Units.degreesToRadians(200),

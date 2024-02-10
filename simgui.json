@@ -3,7 +3,7 @@
     "types": {
       "/FMSInfo": "FMSInfo",
       "/Shuffleboard/ArmDebug/Arm Graphic": "Mechanism2d",
-      "/Shuffleboard/ArmDebug/PID": "PIDController"
+      "/Shuffleboard/ArmDebug/PID": "ProfiledPIDController"
     },
     "windows": {
       "/Shuffleboard/ArmDebug/Arm Graphic": {
@@ -58,21 +58,39 @@
           "series": [
             {
               "color": [
-                0.3333333432674408,
-                0.658823549747467,
-                0.4078431725502014,
-                1.0
-              ],
-              "id": "NT:/Shuffleboard/ArmDebug/Target Angle Degrees"
-            },
-            {
-              "color": [
                 0.7686275243759155,
                 0.30588236451148987,
                 0.32156863808631897,
                 1.0
               ],
               "id": "NT:/Shuffleboard/ArmDebug/Current Angle"
+            },
+            {
+              "color": [
+                0.8666667342185974,
+                0.5176470875740051,
+                0.32156863808631897,
+                1.0
+              ],
+              "id": "NT:/Shuffleboard/ArmDebug/Goal"
+            },
+            {
+              "color": [
+                0.3333333432674408,
+                0.658823549747467,
+                0.4078431725502014,
+                1.0
+              ],
+              "id": "NT:/Shuffleboard/ArmDebug/Setpoint Pos"
+            },
+            {
+              "color": [
+                0.7686275243759155,
+                0.7627699971199036,
+                0.30588236451148987,
+                1.0
+              ],
+              "id": "NT:/Shuffleboard/ArmDebug/Setpoint Vel"
             }
           ]
         },
@@ -98,8 +116,71 @@
                 1.0
               ],
               "id": "NT:/Shuffleboard/ArmDebug/Motor Power"
+            },
+            {
+              "color": [
+                0.8666667342185974,
+                0.832166850566864,
+                0.32156869769096375,
+                1.0
+              ],
+              "id": "NT:/Shuffleboard/ArmDebug/ff calc"
+            },
+            {
+              "color": [
+                0.3333333432674408,
+                0.658823549747467,
+                0.4078431725502014,
+                1.0
+              ],
+              "id": "NT:/Shuffleboard/ArmDebug/pid calc"
             }
           ]
+        }
+      ]
+    },
+    "Plot <1>": {
+      "plots": [
+        {
+          "axis": [
+            {
+              "max": 360.0,
+              "min": -360.0
+            },
+            {
+              "max": 1.1,
+              "min": -1.1
+            }
+          ],
+          "backgroundColor": [
+            0.0,
+            0.0,
+            0.0,
+            0.8500000238418579
+          ],
+          "height": 332,
+          "series": [
+            {
+              "color": [
+                0.2980392277240753,
+                0.44705885648727417,
+                0.6901960968971252,
+                1.0
+              ],
+              "id": "NT:/Shuffleboard/ArmDebug/ff calc",
+              "yAxis": 1
+            },
+            {
+              "color": [
+                0.8666667342185974,
+                0.5176470875740051,
+                0.32156863808631897,
+                1.0
+              ],
+              "id": "NT:/Shuffleboard/ArmDebug/Setpoint Vel"
+            }
+          ],
+          "yaxis2": true
         }
       ]
     }

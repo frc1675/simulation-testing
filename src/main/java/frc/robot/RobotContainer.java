@@ -42,11 +42,11 @@ public class RobotContainer {
 
   private void configureBindings() {
     ShuffleboardTab tab = Shuffleboard.getTab("JoshArm");
-    GenericEntry e = tab.add("Variable target", 0).getEntry();
+    GenericEntry e = tab.add("Variable target", 100).getEntry();
 
     m_driverController.a().onTrue(new SetArmAngle(arm, Constants.HOME_DEG));
     m_driverController.b().onTrue(new SetArmAngle(arm, 0));
-    m_driverController.x().onTrue(new SetShuffleboardAngle(arm, e, 135));
+    m_driverController.x().onTrue(new SetShuffleboardAngle(arm, e, 100));
   }
 
   public Command getAutonomousCommand() {
